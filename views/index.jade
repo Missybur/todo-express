@@ -1,6 +1,32 @@
 doctype html
 html(lang='en')
   head
-    title Index
+    title Todo List
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='../css/style.css')
   body
-    h1 Index!
+    .container
+      h1 Todo List
+      input#description(type='text')
+      input#date(type='date')
+      button#add.btn.btn-default Add
+      table.table.table-bordered
+        thead
+          tr
+            th.col-xs-1 Complete?
+            th.col-xs-7 Description
+            th.col-xs-3 Due Date
+            th.col-xs-1 Remove
+        tbody#list
+        tr#sample
+          td
+            input(type='checkbox')
+          td.description
+          td.date
+          td
+            a.remove(href='#')
+              i.fa.fa-trash
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', integrity='sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==', crossorigin='anonymous')
+    script(src='main.js')

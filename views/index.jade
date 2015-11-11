@@ -5,28 +5,41 @@ html(lang='en')
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='../css/style.css')
+  doctype html
+html(lang='en')
+  head
+    title Todo List
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', rel='stylesheet', integrity='sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/style.css')
   body
     .container
-      h1 Todo List
-      input#description(type='text')
-      input#date(type='date')
+      h1 Contact List
+      input#firstName(type='text', placeholder='First Name')
+      input#lastName(type='text', placeholder='Last Name')
+      input#phoneNumber(type='text', placeholder='xxx-xxx-xxxx')
+      input#email(type='email', placeholder='email')
       button#add.btn.btn-default Add
       table.table.table-bordered
         thead
           tr
-            th.col-xs-1 Complete?
-            th.col-xs-7 Description
-            th.col-xs-3 Due Date
+            th.col-xs-1 Edit
+            th.col-xs-3 First Name:
+            th.col-xs-3 Last Name:
+            th.col-xs-3 Phone Number:
+            th.col-xs-3 Email:
             th.col-xs-1 Remove
         tbody#list
         tr#sample
           td
             input(type='checkbox')
-          td.description
-          td.date
+          td.firstName
+          td.lastName
+          td.phoneNumber
+          td.email
           td
             a.remove(href='#')
               i.fa.fa-trash
     script(src='https://code.jquery.com/jquery-2.1.4.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', integrity='sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==', crossorigin='anonymous')
-    script(src='main.js')
+    script(src='js/main.js')

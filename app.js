@@ -19,7 +19,7 @@ app.use(express.static('public'));
 // ROUTES
 app.use('/', require('./routes/index'));
 app.use('/todos', require('./routes/todos'));
-app.use()
+// app.use()
 
 // 404 HANDLER
 app.use(function(req, res){

@@ -4,21 +4,21 @@
 
   $(document).ready(init);
 
-  var tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
+  var contacts = localStorage.contacts ? JSON.parse(localStorage.contacts) : [];
   updateList();
 
   function init() {
-    $('#add').click(addTodo);
+    $('#add').click(addContact);
     $('#list').on('change', 'input', checkboxChanged);
-    $('#list').on('click', '.remove', removeTodo);
+    $('#list').on('click', '.remove', removeContact);
   }
 
-  function removeTodo(e) {
+  function removeContact(e) {
     var $target = $(e.target);
     var $targetRow = $target.closest('tr');
 
     var index = $targetRow.index();
-    tasks.splice(index, 1);
+    contacts.splice(index, 1);
 
     updateList();
     saveLocalStorage();
@@ -29,57 +29,63 @@
     var $targetRow = $target.closest('tr');
 
     var index = $targetRow.index();
-    tasks[index].completed = $target.is(':checked');
+    contacts[index].completed = $target.is(':checked');
 
     updateList();
     saveLocalStorage();
   }
 
-  function addTodo() {
-    var description = $('#description').val();
-    var date = $('#date').val();
+  function addContact() {
+    var firstName = $('#firstName').val();
+    var lastName = $('#lastName').val();
+    var phoneNumber = $('#phoneNumber').val();
+    var email = $('#email').val();
 
-    var task = {
-      description: description,
-      date: date,
-      completed: false
+    var contact = {
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      email: email,
+      deleted: false
     };
 
-    tasks.push(task);
+    contacts.push(contact);
 
     updateList();
     saveLocalStorage();
   }
 
   function updateList() {
-    console.log('tasks:', tasks);
+    console.log('contacts:', contacts);
     $('#list').empty();
 
-    if(tasks.length){
+    if(contacts.length){
       $('table.table').show();
     } else {
       $('table.table').hide();
     }
 
-    var taskElements = tasks.map(function(task){
+    var contactElements = contacts.map(function(contact){
       var $tr = $('#sample').clone();
       $tr.removeAttr('id');
-      $tr.children('.description').text(task.description);
-      $tr.children('.date').text(task.date);
-      $tr.find('input').prop('checked', task.completed);
+      $tr.children('.firstName').text(contact.firstName);
+      $tr.children('.lastName').text(contact.lastName);
+      $tr.children('.phoneNumber').text(contact.phoneNumber);
+      $tr.children('.email').text(contact.email);
+      $tr.find('input').prop('checked', contact.completed);
       $tr.css({
-        'text-decoration': task.completed ? 'line-through' : '',
-        'color': task.completed ? '#aaa' : ''
+        'text-decoration': contact.completed ? 'line-through' : '',
+        'color': contact.completed ? '#aaa' : ''
       });
       $tr.show();
       return $tr;
     });
 
-    $('#list').append(taskElements);
+    $('#list').append(contactElements);
   }
 
   function saveLocalStorage() {
-    localStorage.tasks = JSON.stringify(tasks);
+    localStorage.contacts = JSON.stringify(contacts);
   }
 
 
